@@ -238,25 +238,39 @@
         .screenshots { padding: 100px 0; }
         .screenshot-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         .screenshot-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
+            border-radius: 20px;
             overflow: hidden;
             transition: transform .4s var(--ease-out), box-shadow .4s;
+            position: relative;
         }
         .screenshot-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(124,58,237,0.12);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 24px 64px rgba(124,58,237,0.15);
+            border-color: rgba(124,58,237,0.25);
+            z-index: 2;
         }
+        .screenshot-card:nth-child(2) { transform: translateY(20px); }
+        .screenshot-card:nth-child(2):hover { transform: translateY(14px) scale(1.01); }
+        .screenshot-card:nth-child(4) { transform: translateY(20px); }
+        .screenshot-card:nth-child(4):hover { transform: translateY(14px) scale(1.01); }
         .screenshot-card img {
-            width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+            width: 100%;
+            aspect-ratio: 1.44 / 1;
+            object-fit: cover;
+            display: block;
         }
         .screenshot-placeholder {
-            width: 100%; aspect-ratio: 4/3;
+            width: 100%;
+            aspect-ratio: 1.44 / 1;
             display: flex; align-items: center; justify-content: center;
             font-size: 2.8rem;
         }
@@ -265,12 +279,12 @@
         .screenshot-placeholder.pl-3 { background: linear-gradient(160deg, #101e14, #183828); }
         .screenshot-placeholder.pl-4 { background: linear-gradient(160deg, #201420, #381838); }
         .screenshot-card .caption {
-            padding: 16px 14px;
-            font-weight: 600; font-size: 0.9rem;
+            padding: 18px 20px;
+            font-weight: 600; font-size: 0.95rem;
         }
         .screenshot-card .caption span {
-            display: block; font-weight: 400; font-size: 0.78rem;
-            color: var(--text-dim); margin-top: 4px; line-height: 1.5;
+            display: block; font-weight: 400; font-size: 0.8rem;
+            color: var(--text-dim); margin-top: 5px; line-height: 1.5;
         }
 
         /* ── Features — bento grid ── */
@@ -516,7 +530,6 @@
         @media (max-width: 900px) {
             .feature-grid { grid-template-columns: repeat(2, 1fr); }
             .feature-card:nth-child(1) { grid-column: span 2; }
-            .screenshot-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .nav-links {
@@ -537,6 +550,10 @@
             .steps::before { display: none; }
             .pricing-grid { grid-template-columns: 1fr; }
             .screenshot-grid { grid-template-columns: 1fr; }
+            .screenshot-card:nth-child(2),
+            .screenshot-card:nth-child(4) { transform: none; }
+            .screenshot-card:nth-child(2):hover,
+            .screenshot-card:nth-child(4):hover { transform: translateY(-6px) scale(1.01); }
         }
     </style>
     <script type="application/ld+json">
