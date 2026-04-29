@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://koinov-infocall.github.io/pianoflow-site/sitemap.xml
